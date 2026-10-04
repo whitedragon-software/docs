@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // Separate Worker for the docs site (the main site stays on "www").
+  "name": "docs",
+
+  "compatibility_date": "2026-09-21",
+
+  // Optional: attach the domain from here instead of the dashboard.
+  // Requires whitedragon.software to be a zone in this Cloudflare account.
+  // "routes": [{ "pattern": "docs.whitedragon.software", "custom_domain": true }],
+
+  "assets": {
+    "directory": "./public",
+
+    // Every unknown path (/relay, /daybreak, ...) gets index.html,
+    // and the page picks the right README from the URL.
+    "not_found_handling": "single-page-application"
+  }
+}

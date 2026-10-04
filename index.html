@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation · WhiteDragon-software</title>
+<meta name="description" content="Documentation for every WhiteDragon-software project, rendered live from each repository's README.">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/png" href="/logo.png">
+<style>
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:#fff;color:#1f2328;font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif}
+  a{color:#0969da;text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:2px solid #0969da;outline-offset:2px}
+  .dim{color:#59636e}
+
+  /* Header */
+  .top{position:sticky;top:0;z-index:20;height:64px;display:flex;align-items:center;gap:16px;padding:0 24px;background:#fff;border-bottom:1px solid #d1d9e0}
+  .brand{display:flex;align-items:center;gap:10px;color:#1f2328;font-weight:600}
+  .brand:hover{text-decoration:none}
+  .brand img{width:32px;height:32px;display:block}
+  .brand .dim{font-weight:400;padding-left:10px;border-left:1px solid #d1d9e0}
+  .links{margin-left:auto;display:flex;gap:20px;font-size:14px}
+  .links a{color:#59636e}
+  .links a:hover{color:#1f2328;text-decoration:none}
+  #menu{display:none;width:36px;height:36px;border:1px solid #d1d9e0;border-radius:6px;background:#fff;font-size:18px;cursor:pointer}
+
+  /* Layout */
+  .layout{display:grid;grid-template-columns:280px minmax(0,1fr) 240px;max-width:1440px;margin:0 auto}
+  #side{position:sticky;top:64px;height:calc(100vh - 64px);overflow:auto;padding:24px 16px;border-right:1px solid #d1d9e0;font-size:14px}
+  .gt{margin:20px 8px 6px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#59636e}
+  .gt:first-child{margin-top:0}
+  .nl{display:block;padding:6px 8px;border-radius:6px;color:#1f2328}
+  .nl:hover{background:#f6f8fa;text-decoration:none}
+  .nl.on{background:#ddf4ff;color:#0969da;font-weight:600}
+  main{min-width:0;max-width:900px;padding:32px 48px 64px}
+  #toc{position:sticky;top:64px;align-self:start;max-height:calc(100vh - 64px);overflow:auto;padding:32px 16px;font-size:14px}
+  #toc a{display:block;padding:4px 8px;color:#59636e;border-left:2px solid transparent}
+  #toc a.sub{padding-left:20px}
+  #toc a:hover{color:#1f2328;text-decoration:none}
+  #toc a.on{color:#0969da;border-left-color:#0969da}
+
+  /* Page chrome */
+  .crumbs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;font-size:14px;color:#59636e}
+  .actions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .btn{display:inline-block;padding:5px 14px;border:1px solid #d1d9e0;border-radius:6px;background:#f6f8fa;color:#1f2328;font-size:14px;font-weight:500}
+  .btn:hover{background:#eff2f5;text-decoration:none}
+  .pt{margin:0 0 8px;font-size:2em;line-height:1.25}
+  .lede{max-width:640px;margin:0;color:#59636e;font-size:18px}
+  .gh{margin:32px 0 12px;font-size:1.25em}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+  .card{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid #d1d9e0;border-radius:6px;color:#1f2328}
+  .card:hover{border-color:#0969da;text-decoration:none}
+  .card span{font-size:14px;color:#59636e}
+  .foot{margin-top:48px;padding-top:16px;border-top:1px solid #d1d9e0;font-size:14px;color:#59636e}
+
+  /* Rendered README */
+  .md{font-size:16px;line-height:1.6;overflow-wrap:break-word}
+  .md :is(h1,h2,h3,h4,h5,h6){margin:24px 0 16px;font-weight:600;line-height:1.25;scroll-margin-top:84px}
+  .md h1{margin-top:0;padding-bottom:.3em;border-bottom:1px solid #d1d9e0;font-size:2em}
+  .md h2{margin-top:32px;padding-bottom:.3em;border-bottom:1px solid #d1d9e0;font-size:1.5em}
+  .md h3{font-size:1.25em}
+  .md :is(p,ul,ol,table,pre,blockquote,details){margin:0 0 16px}
+  .md :is(ul,ol){padding-left:2em}
+  .md li+li{margin-top:.25em}
+  .md code{padding:.2em .4em;border-radius:6px;background:#818b981f;font:85% ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .md pre{padding:16px;overflow:auto;border-radius:6px;background:#f6f8fa;font-size:85%;line-height:1.45}
+  .md pre code{padding:0;background:none;font-size:100%}
+  .md table{display:block;width:max-content;max-width:100%;overflow:auto;border-collapse:collapse}
+  .md :is(th,td){padding:6px 13px;border:1px solid #d1d9e0}
+  .md th{font-weight:600}
+  .md tr:nth-child(2n){background:#f6f8fa}
+  .md blockquote{margin-left:0;padding:0 1em;border-left:.25em solid #d1d9e0;color:#59636e}
+  .md img{max-width:100%}
+  .md hr{height:.25em;margin:24px 0;border:0;background:#d1d9e0}
+  .md [align=center]{text-align:center}
+  .md .hl{margin-left:8px;color:#59636e;opacity:0}
+  .md :is(h1,h2,h3,h4,h5,h6):hover .hl{opacity:1}
+
+  @media (max-width:1100px){
+    .layout{grid-template-columns:260px minmax(0,1fr)}
+    #toc{display:none}
+    main{padding:32px 32px 64px}
+  }
+  @media (max-width:800px){
+    #menu{display:block}
+    .top{padding:0 16px}
+    .links{display:none}
+    .layout{display:block}
+    #side{position:fixed;top:64px;bottom:0;left:0;z-index:15;width:280px;height:auto;background:#fff;transform:translateX(-100%);transition:transform .2s}
+    body.nav #side{transform:none;box-shadow:0 8px 24px #1f23282e}
+    main{padding:24px 20px 48px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <button id="menu" type="button" aria-label="Toggle navigation">&#9776;</button>
+  <a class="brand" href="/" aria-label="WhiteDragon-software documentation, home">
+    <img src="/logo.png" alt="" width="32" height="32">
+    <span>WhiteDragon-software</span>
+    <span class="dim">Docs</span>
+  </a>
+  <nav class="links" aria-label="Site">
+    <a href="https://whitedragon.software">Website</a>
+    <a href="https://github.com/whitedragon-software">GitHub</a>
+  </nav>
+</header>
+
+<div class="layout">
+  <aside id="side" aria-label="Documentation"></aside>
+  <main id="main"></main>
+  <aside id="toc" aria-label="On this page"></aside>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* The only list to maintain: add a repo here and it gets a page,
+     a sidebar entry and a card. Its README is fetched live from GitHub. */
+  var ORG = "whitedragon-software";
+  var REPOS = [
+    { id: "relay", group: "Projects", desc: "Single-file Cloudflare Worker that forwards and rewrites web pages through a domain you control." },
+    { id: "daybreak", group: "Projects", desc: "Minimal multi-tab desktop browser built on Electron." },
+    { id: "webcore", group: "Projects", desc: "Chat assistant running entirely on Cloudflare Workers AI, with no separate backend." },
+    { id: "whitedragon-authenticator", group: "Projects", desc: "Local-only TOTP authenticator in a single HTML file, with no server or account." },
+    { id: "whitedragon-forum", group: "Projects", desc: "Community space built on git-forums and GitHub Discussions." },
+    { id: "WD-NCL", group: "Licenses", desc: "Non-commercial open-source license, v1.0." },
+    { id: "WD-SAL", group: "Licenses", desc: "Source-available license with a patent grant, v1.0." }
+  ];
+  var TTL = 10 * 60 * 1000;
+
+  var side = document.getElementById("side");
+  var main = document.getElementById("main");
+  var toc = document.getElementById("toc");
+  var io = null, cur = null, token = 0;
+
+  function find(n) {
+    n = (n || "").toLowerCase();
+    for (var i = 0; i < REPOS.length; i++) if (REPOS[i].id.toLowerCase() === n) return REPOS[i];
+    return null;
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
+  }
+  function groups() {
+    var g = [];
+    REPOS.forEach(function (r) { if (g.indexOf(r.group) < 0) g.push(r.group); });
+    return g;
+  }
+
+  /* ---- Fetching, with a short localStorage cache ---- */
+  function cget(id) {
+    try { return JSON.parse(localStorage.getItem("wd-docs:" + id)); } catch (e) { return null; }
+  }
+  function cset(id, v) {
+    try { localStorage.setItem("wd-docs:" + id, JSON.stringify({ t: Date.now(), v: v })); } catch (e) {}
+  }
+  function load(id) {
+    var c = cget(id);
+    if (c && Date.now() - c.t < TTL) return Promise.resolve(c.v);
+    return fetch("https://api.github.com/repos/" + ORG + "/" + id + "/readme", {
+      headers: { Accept: "application/vnd.github.html+json" }
+    })
+      .then(function (r) { if (!r.ok) throw 0; return r.text(); })
+      .then(function (h) { return { html: h }; })
+      .catch(function () {
+        return fetch("https://raw.githubusercontent.com/" + ORG + "/" + id + "/HEAD/README.md")
+          .then(function (r) { if (!r.ok) throw 0; return r.text(); })
+          .then(function (t) { return { raw: t }; });
+      })
+      .then(function (v) { cset(id, v); return v; })
+      .catch(function (e) { if (c) return c.v; throw e; });
+  }
+
+  /* ---- Sidebar ---- */
+  function buildSide() {
+    var h = '<a class="nl" href="/" data-id="">Overview</a>';
+    groups().forEach(function (g) {
+      h += '<p class="gt">' + g + "</p>";
+      REPOS.forEach(function (r) {
+        if (r.group === g) h += '<a class="nl" href="/' + r.id + '" data-id="' + r.id + '">' + r.id + "</a>";
+      });
+    });
+    side.innerHTML = h;
+  }
+  function mark(id) {
+    [].forEach.call(side.querySelectorAll(".nl"), function (a) {
+      var on = a.getAttribute("data-id") === id;
+      a.classList.toggle("on", on);
+      if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+  }
+
+  /* ---- Views ---- */
+  function home() {
+    document.title = "Documentation · WhiteDragon-software";
+    var h = '<h1 class="pt">Documentation</h1><p class="lede">Every WhiteDragon-software project, documented from its own README. Pages are fetched live from GitHub, so they stay current on their own.</p>';
+    groups().forEach(function (g) {
+      h += '<h2 class="gh">' + g + '</h2><div class="cards">';
+      REPOS.forEach(function (r) {
+        if (r.group === g) h += '<a class="card" href="/' + r.id + '"><strong>' + r.id + "</strong><span>" + r.desc + "</span></a>";
+      });
+      h += "</div>";
+    });
+    main.innerHTML = h;
+    toc.innerHTML = "";
+    mark("");
+  }
+
+  function notFound() {
+    document.title = "Page not found · WhiteDragon-software";
+    main.innerHTML = '<h1 class="pt">Page not found</h1><p class="lede">There is no documentation page at this address.</p><p><a class="btn" href="/">Back to overview</a></p>';
+    toc.innerHTML = "";
+    mark(null);
+  }
+
+  function repo(r) {
+    var gh = "https://github.com/" + ORG + "/" + r.id;
+    var mine = ++token;
+    document.title = r.id + " · Docs · WhiteDragon-software";
+    main.innerHTML =
+      '<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Docs</a><span>/</span><span>' + r.group + "</span><span>/</span><span>" + r.id + "</span></nav>" +
+      '<div class="actions"><a class="btn" href="' + gh + '" target="_blank" rel="noopener">View on GitHub</a>' +
+      '<a class="btn" href="' + gh + '/blob/HEAD/README.md" target="_blank" rel="noopener">View source</a></div>' +
+      '<article class="md" id="md"><p class="dim">Loading README&hellip;</p></article>' +
+      '<p class="foot">This page is rendered live from the README of <a href="' + gh + '" target="_blank" rel="noopener">' + ORG + "/" + r.id + "</a>. Edit the README there and this page follows.</p>";
+    toc.innerHTML = "";
+    mark(r.id);
+    load(r.id).then(function (d) {
+      if (mine === token) fill(r, d);
+    }).catch(function () {
+      if (mine !== token) return;
+      document.getElementById("md").innerHTML = '<p>The README could not be loaded right now. <a href="' + gh + '" target="_blank" rel="noopener">Read it on GitHub</a>.</p>';
+    });
+  }
+
+  function fill(r, d) {
+    var md = document.getElementById("md");
+    if (d.html) {
+      md.innerHTML = d.html;
+      fix(md, r.id);
+    } else {
+      md.innerHTML = '<p class="dim">Showing the raw README, because the rendered version is unavailable.</p><pre></pre>';
+      md.querySelector("pre").textContent = d.raw;
+    }
+    if (!md.querySelector("h1")) md.insertAdjacentHTML("afterbegin", "<h1>" + esc(r.id) + "</h1>");
+    heads(md);
+    var el = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (el) el.scrollIntoView();
+  }
+
+  /* Resolve relative links/images against the repo, and keep links between
+     our own repos inside the docs. */
+  function fix(md, id) {
+    var blob = "https://github.com/" + ORG + "/" + id + "/blob/HEAD/";
+    var raw = "https://raw.githubusercontent.com/" + ORG + "/" + id + "/HEAD/";
+    var abs = /^([a-z][a-z0-9+.-]*:|\/\/)/i;
+    [].forEach.call(md.querySelectorAll("a.anchor"), function (a) { a.remove(); });
+    [].forEach.call(md.querySelectorAll("a[href]"), function (a) {
+      var h = a.getAttribute("href");
+      if (h.charAt(0) === "#") { a.setAttribute("href", h.replace("#user-content-", "#")); return; }
+      if (!abs.test(h)) a.setAttribute("href", new URL(h, blob).href);
+      var m = a.href.match(/^https:\/\/github\.com\/whitedragon-software\/([^\/#?]+)\/?$/i);
+      var r = m && find(m[1]);
+      if (r) { a.setAttribute("href", "/" + r.id); return; }
+      if (/^https?:/i.test(a.href)) { a.target = "_blank"; a.rel = "noopener"; }
+    });
+    [].forEach.call(md.querySelectorAll("img[src]"), function (img) {
+      var s = img.getAttribute("src");
+      if (!abs.test(s)) img.setAttribute("src", new URL(s, raw).href);
+    });
+  }
+
+  /* GitHub-style heading ids, permalinks and the "On this page" list. */
+  function heads(md) {
+    var seen = {}, list = [];
+    [].forEach.call(md.querySelectorAll("h1,h2,h3,h4,h5,h6"), function (h) {
+      var t = h.textContent.trim();
+      var s = t.toLowerCase().replace(/[^\p{L}\p{N}\s_-]/gu, "").replace(/\s/g, "-") || "section";
+      var n = seen[s] === undefined ? 0 : seen[s] + 1;
+      seen[s] = n;
+      var id = n ? s + "-" + n : s;
+      h.id = id;
+      h.insertAdjacentHTML("beforeend", '<a class="hl" href="#' + id + '" aria-label="Link to this section">#</a>');
+      if (h.tagName === "H2" || h.tagName === "H3") list.push({ id: id, t: t, sub: h.tagName === "H3" });
+    });
+    if (!list.length) return;
+    toc.innerHTML = '<p class="gt">On this page</p>' + list.map(function (x) {
+      return '<a class="' + (x.sub ? "sub" : "") + '" href="#' + x.id + '">' + esc(x.t) + "</a>";
+    }).join("");
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        [].forEach.call(toc.querySelectorAll("a"), function (a) {
+          a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id);
+        });
+      });
+    }, { rootMargin: "-80px 0px -70% 0px" });
+    list.forEach(function (x) { io.observe(document.getElementById(x.id)); });
+  }
+
+  /* ---- Routing: /<repo>, served by the Worker's SPA fallback ---- */
+  function route() {
+    if (io) { io.disconnect(); io = null; }
+    document.body.classList.remove("nav");
+    cur = location.pathname;
+    var p = decodeURIComponent(location.pathname).replace(/^\/+|\/+$/g, "");
+    if (!p || p === "index.html") return home();
+    var r = find(p);
+    if (r) return repo(r);
+    notFound();
+  }
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a");
+    if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target) return;
+    if (a.origin !== location.origin) return;
+    if (a.pathname === location.pathname && a.hash) return; /* in-page anchor: let the browser scroll */
+    e.preventDefault();
+    history.pushState(null, "", a.pathname + a.search + a.hash);
+    window.scrollTo(0, 0);
+    route();
+  });
+  window.addEventListener("popstate", function () { if (location.pathname !== cur) route(); });
+  document.getElementById("menu").addEventListener("click", function () { document.body.classList.toggle("nav"); });
+
+  buildSide();
+  route();
+})();
+</script>
+</body>
+</html>
